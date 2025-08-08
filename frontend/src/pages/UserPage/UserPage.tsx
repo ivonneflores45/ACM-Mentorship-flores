@@ -457,7 +457,7 @@ function SoftSkillSection({
 
   return (
     <>
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div style={{ display: "flex", alignItems: "center", marginTop:"1rem" }}>
         <p style={{ color: "white", fontSize: "1.25rem", margin: 0 }}>
           Soft Skills
         </p>
@@ -1084,7 +1084,7 @@ function ExperienceSection({
 
   return (
     <>
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div style={{ display: "flex", alignItems: "center", marginTop:"1rem" }}>
         <p style={{ color: "white", fontSize: "1.25rem", margin: 0 }}>
           Experience
         </p>
@@ -1185,7 +1185,7 @@ function ProjectSection({
 
   return (
     <>
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div style={{ display: "flex", alignItems: "center", marginTop:"1rem" }}>
         <p style={{ color: "white", fontSize: "1.25rem", margin: 0 }}>
           Projects
         </p>
@@ -1286,7 +1286,7 @@ function CertificationSection({
 
   return (
     <>
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div style={{ display: "flex", alignItems: "center", marginTop:"1rem" }}>
         <p style={{ color: "white", fontSize: "1.25rem", margin: 0 }}>
           Certifications
         </p>
@@ -1397,7 +1397,7 @@ function EducationSection({
 
   return (
     <>
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div style={{ display: "flex", alignItems: "center", marginTop:"1rem" }}>
         <p style={{ color: "white", fontSize: "1.25rem", margin: 0 }}>
           Education
         </p>
@@ -1587,7 +1587,7 @@ function SocialSection({
 
   return (
     <>
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div style={{ display: "flex", alignItems: "center", marginTop:"1rem" }}>
         <p style={{ color: "white", fontSize: "1.25rem", margin: 0 }}>
           Socials
         </p>

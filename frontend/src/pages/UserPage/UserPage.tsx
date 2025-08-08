@@ -1634,7 +1634,7 @@ function BioSection({
 }) {
   return (
     <>
-      <div style={{ borderRadius: "0.5rem", marginTop: "0.5rem" }}>
+      <div style={{ borderRadius: "0.5rem", marginTop: "1rem" }}>
         <div style={{ display: "flex", alignItems: "center" }}>
           <p style={{ color: "white", fontSize: "1.25rem", margin: 0 }}>Bio</p>
           {!disabled && <Pencil style={{ marginLeft: 5 }} size={"1rem"} />}

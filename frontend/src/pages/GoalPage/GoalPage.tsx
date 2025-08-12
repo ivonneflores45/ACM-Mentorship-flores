@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { GoalObj, TaskObj, FunctionAny } from "@shared/types/general";
 
@@ -28,19 +28,37 @@ import MinimalisticTextArea from "../../components/MinimalisticTextArea/Minimali
 import styles from "./GoalPage.module.css";
 import useTutorialWithDialog from "../../hooks/UseTutorialWithDialog/useTutorialWithDialog";
 import { FaRegQuestionCircle } from "react-icons/fa";
+import { GoalPageContext, GoalPageProvider } from "./GoalPageContext";
 
-export default function GoalPage() {
+export default function GoalPageWithContext(){
+  return(
+  <GoalPageProvider>
+    <GoalPage/>
+  </GoalPageProvider>
+  )
+}
+
+
+export function GoalPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [saving, setSaving] = useState(false);
-  const [changed, setChanged] = useState(false);
   const [params, _] = useSearchParams();
-  const [goal, setGoal] = useState<GoalObj | boolean | undefined>(undefined);
   const originalGoal = useRef<GoalObj | boolean | undefined>({});
-  const [goalOwner, setGoalOwner] = useState<ClientSocketUser | boolean>();
   const id = params.get("id");
   const newParam = params.get("new");
   const isNew = newParam == "true";
+
+  const {
+    saving, 
+    setSaving, 
+    changed, 
+    setChanged, 
+    goal, 
+    setGoal, 
+    goalOwner, 
+    setGoalOwner
+  } = useContext(GoalPageContext)
+
   const { user: self, ready } = useSelector(
     (store: ReduxRootState) => store.ClientSocket
   );

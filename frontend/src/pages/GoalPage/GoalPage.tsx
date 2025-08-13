@@ -135,11 +135,6 @@ export function GoalPage() {
 
   const selfIsOwner = self.id == goalOwner.id;
 
-  const setTasks = (tasks: TaskObj[]) => {
-    setGoal({ ...goal, tasks });
-    setChanged(true);
-  };
-
   const setGoalName = (name: string) => {
     setGoal({ ...goal, name });
     setChanged(true);
@@ -215,7 +210,7 @@ export function GoalPage() {
     );
   };
 
-  const { name, tasks } = goal;
+  const { name } = goal;
   const { fName, mName, lName } = goalOwner;
 
   const handleOnBack = () => {
@@ -277,8 +272,8 @@ export function GoalPage() {
         <div style={{ marginLeft: 10 }}>
           <TasksSection
             disabled={!selfIsOwner}
-            tasks={tasks}
-            setTasks={setTasks}
+            // tasks={tasks}
+            // setTasks={setTasks}
           />
         </div>
       </div>
@@ -295,25 +290,36 @@ export function GoalPage() {
 }
 
 function TasksSection({
-  tasks,
-  setTasks,
   disabled,
 }: {
-  tasks?: TaskObj[];
-  setTasks: Function;
   disabled: boolean;
 }) {
+  const {goal,setGoal,setChanged} = useContext(GoalPageContext)
   const dispatch = useDispatch();
+  // type guard for tasks
+  if (typeof goal === "boolean" || !goal){
+    return null;
+  }
+
+  const { tasks } = goal;
+
+  const setTasks = (tasks: TaskObj[]) => {
+    setGoal({ ...goal, tasks });
+    setChanged(true);
+  };
+
   function handleAddTask() {
     const newTasks = [...(tasks || [])];
     const newTask: TaskObj = {
       name: "New Task",
       description: "Task description",
     };
+    
     newTasks.push(newTask);
     setTasks(newTasks);
   }
 
+  
   function handleEditTask(tIndex: number, newTask: TaskObj) {
     if (!tasks) {
       return;
